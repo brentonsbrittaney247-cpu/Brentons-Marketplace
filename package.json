@@ -1,0 +1,36 @@
+{
+  "name": "brentons-marketplace",
+  "version": "1.0.0",
+  "description": "Brenton's Marketplace - Auction and buy-it-now platform",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "concurrently \"nodemon server/index.js\" \"cd client && npm start\"",
+    "client": "cd client && npm start",
+    "server": "nodemon server/index.js",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd client && npm install",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "keywords": ["marketplace", "auction", "ecommerce"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "multer": "^1.4.5-lts.1",
+    "stripe": "^14.9.0",
+    "socket.io": "^4.6.1",
+    "node-cron": "^3.0.3",
+    "shippo": "^1.7.1",
+    "express-validator": "^7.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "concurrently": "^8.2.2"
+  }
+}
