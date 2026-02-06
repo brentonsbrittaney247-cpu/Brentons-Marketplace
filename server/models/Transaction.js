@@ -39,6 +39,10 @@ const transactionSchema = new mongoose.Schema({
     trackingNumber: String,
     labelId: String
   },
+  shippingCost: {
+    type: Number,
+    default: 0
+  },
   isReturned: {
     type: Boolean,
     default: false

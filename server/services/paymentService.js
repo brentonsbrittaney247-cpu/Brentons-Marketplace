@@ -74,8 +74,16 @@ class PaymentService {
       throw new Error('Invalid transaction for refund');
     }
 
-    // Add $3 return fee to buyer
-    transaction.returnFee = 3.00;
+    // Calculate return fee based on purchase price
+    if (transaction.salePrice < 100) {
+      // Under $100: $4.24 flat fee
+      transaction.returnFee = 4.24;
+    } else {
+      // $101 or more: 13% of price + shipping costs
+      const percentageFee = transaction.salePrice * 0.13;
+      transaction.returnFee = percentageFee + (transaction.shippingCost || 0);
+    }
+    
     transaction.isReturned = true;
     transaction.paymentStatus = 'refunded';
     await transaction.save();

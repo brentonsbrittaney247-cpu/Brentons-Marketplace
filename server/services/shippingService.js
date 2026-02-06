@@ -45,7 +45,8 @@ class ShippingService {
       return {
         url: purchasedLabel.label_url,
         trackingNumber: purchasedLabel.tracking_number,
-        labelId: purchasedLabel.object_id
+        labelId: purchasedLabel.object_id,
+        cost: parseFloat(rate.amount) || 0
       };
     } catch (error) {
       console.error('Shipping label generation failed:', error);

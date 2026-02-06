@@ -58,6 +58,8 @@ router.post('/:id/pay', auth, async (req, res) => {
     );
 
     transaction.shippingLabel = shippingLabel;
+    // Store shipping cost for return fee calculation
+    transaction.shippingCost = shippingLabel.cost || 0;
     await transaction.save();
 
     res.json({ transaction, paymentResult, shippingLabel });
