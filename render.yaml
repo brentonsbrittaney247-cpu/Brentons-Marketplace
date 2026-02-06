@@ -1,5 +1,4 @@
 services:
-  # Backend API
   - type: web
     name: brentons-marketplace-api
     env: node
@@ -15,7 +14,7 @@ services:
       - key: MONGODB_URI
         sync: false
       - key: JWT_SECRET
-        generateValue: true
+        sync: false
       - key: STRIPE_SECRET_KEY
         sync: false
       - key: PAYPAL_CLIENT_ID
@@ -30,7 +29,6 @@ services:
         value: https://brentons-marketplace.onrender.com
     healthCheckPath: /health
 
-  # Frontend
   - type: web
     name: brentons-marketplace
     env: static
