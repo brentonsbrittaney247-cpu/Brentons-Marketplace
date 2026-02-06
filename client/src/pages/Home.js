@@ -53,8 +53,8 @@ function Home() {
   };
 
   return (
-    <div>
-      <h1>Browse Listings</h1>
+    <div style={{minHeight: '100vh', background: 'linear-gradient(135deg, #1a1330 0%, #2d1b47 50%, #3d2357 100%)', padding: '40px', color: '#f0f0f0'}}>
+      <h1 style={{fontSize: '3rem', fontWeight: 'bold', background: 'linear-gradient(45deg, #FFD700, #FFA500)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: 'transparent', textAlign: 'center', marginBottom: '30px', filter: 'drop-shadow(0 0 20px rgba(255,215,0,0.5))'}}>Browse Listings</h1>
       
       <div style={{ marginBottom: '20px' }}>
         <input
@@ -62,7 +62,7 @@ function Home() {
           placeholder="Search listings..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          style={{ width: '100%', padding: '10px', marginBottom: '10px' }}
+          style={{ width: '100%', padding: '15px', marginBottom: '10px', background: '#2d1b47', border: '2px solid #6B4BA6', borderRadius: '8px', color: '#f0f0f0', fontSize: '1rem' }}
         />
         
         <div className="category-filter">
@@ -105,32 +105,33 @@ function Home() {
         </div>
       </div>
 
-      <div className="listing-grid">
+      <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '25px', marginTop: '30px'}}>
         {listings.map(listing => (
           <Link
             key={listing._id}
             to={`/listing/${listing._id}`}
             style={{ textDecoration: 'none', color: 'inherit' }}
           >
-            <div className="listing-card">
+            <div style={{background: 'linear-gradient(135deg, #2d1b47 0%, rgba(107, 75, 166, 0.5) 100%)', border: '2px solid #6B4BA6', borderRadius: '16px', padding: '20px', cursor: 'pointer', transition: 'all 0.4s', boxShadow: '0 8px 24px rgba(107, 75, 166, 0.4)', position: 'relative', overflow: 'hidden'}}>
+              <div style={{position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg, #C9A962 0%, #FFD700 50%, #C9A962 100%)'}}></div>
               {listing.images[0] && (
-                <img src={listing.images[0]} alt={listing.title} />
+                <img src={listing.images[0]} alt={listing.title} style={{width: '100%', height: '200px', objectFit: 'cover', borderRadius: '8px', marginBottom: '15px'}} />
               )}
-              <h3>{listing.title}</h3>
-              <p>{listing.description.substring(0, 100)}...</p>
+              <h3 style={{color: '#FFD700', fontSize: '1.3rem', marginBottom: '10px'}}>{listing.title}</h3>
+              <p style={{color: '#f0f0f0', marginBottom: '15px'}}>{listing.description.substring(0, 100)}...</p>
               
               {listing.listingType === 'buy-now' ? (
-                <p><strong>${listing.price.toFixed(2)}</strong></p>
+                <p style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#C9A962'}}>${listing.price.toFixed(2)}</p>
               ) : (
                 <>
-                  <p><strong>Current Bid: ${listing.currentBid.toFixed(2)}</strong></p>
-                  <p style={{ fontSize: '0.9rem', color: '#666' }}>
+                  <p style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#D84A7E'}}>Current Bid: ${listing.currentBid.toFixed(2)}</p>
+                  <p style={{ fontSize: '0.9rem', color: '#9B7EC9' }}>
                     {formatTimeRemaining(listing.auctionEndTime)}
                   </p>
                 </>
               )}
               
-              <p style={{ fontSize: '0.8rem', marginTop: '10px' }}>
+              <p style={{ fontSize: '0.9rem', marginTop: '15px', color: '#E85C8F' }}>
                 Seller: {listing.seller.username} ⭐ {listing.seller.rating.toFixed(1)}
               </p>
             </div>
@@ -139,7 +140,7 @@ function Home() {
       </div>
 
       {listings.length === 0 && (
-        <p style={{ textAlign: 'center', marginTop: '50px' }}>
+        <p style={{ textAlign: 'center', marginTop: '50px', fontSize: '1.2rem', color: '#9B7EC9' }}>
           No listings found. Try adjusting your filters.
         </p>
       )}
