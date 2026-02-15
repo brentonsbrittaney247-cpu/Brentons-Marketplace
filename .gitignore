@@ -1,7 +1,20 @@
 node_modules/
 .env
+.env.production.local
 uploads/
 *.log
 .DS_Store
 client/build/
 client/node_modules/
+
+# Android specific
+*.keystore
+*.jks
+client/android/app/release/
+client/android/app/build/
+client/android/build/
+client/android/.gradle/
+client/android/local.properties
+client/android/gradle.properties
+client/android/.idea/
+*.iml
