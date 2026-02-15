@@ -2,6 +2,8 @@
 
 A premium marketplace platform featuring a stunning purple-to-pink gradient theme with gold accents. Supporting both Buy-It-Now and Auction listings with integrated payments, messaging, reviews, and automated shipping labels.
 
+**Available on**: Web & Android (Google Play Store ready)
+
 ## Features
 
 - **Listing Types**: Buy-It-Now and Auction (24h or 72h duration)
@@ -67,3 +69,29 @@ brentons-marketplace/
 ## API Endpoints
 
 See individual route files in `server/routes/` for detailed endpoint documentation.
+
+## Android App / Google Play Store
+
+The marketplace is available as an Android app using Capacitor to wrap the React web app.
+
+### Quick Build
+```bash
+cd client
+./build-android.sh    # Linux/Mac
+build-android.bat     # Windows
+```
+
+### Documentation
+- **Full deployment guide**: See [GOOGLE-PLAY-DEPLOYMENT.md](./GOOGLE-PLAY-DEPLOYMENT.md)
+- **Quick build instructions**: See [client/ANDROID-BUILD.md](./client/ANDROID-BUILD.md)
+
+### Requirements for Google Play Store
+- Android Studio or Android SDK Command-line Tools
+- Java 11 or higher
+- Signing keystore for release builds
+
+The Android app includes:
+- Native Android wrapper using Capacitor
+- Progressive Web App (PWA) capabilities
+- Optimized for mobile experience
+- Support for Android 5.1+ (API 22+)
